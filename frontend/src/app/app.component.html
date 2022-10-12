@@ -1,0 +1,13 @@
+<div class="appMain">
+    <div id="topNav">
+        <img matTooltip="Click to Go to homepage" id="premierLeagueLogo" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f2/Premier_League_Logo.svg/1200px-Premier_League_Logo.svg.png" routerLink='/'>
+        <h1 id="mainTitle">Fantasy Team Builder</h1>
+        <button mat-icon-button color="warn" (click)="logout()" id="logout" *ngIf="isLoggedIn">
+            <mat-icon>
+                exit_to_app
+            </mat-icon>
+            Logout
+        </button>
+    </div>
+    <router-outlet></router-outlet>
+</div>

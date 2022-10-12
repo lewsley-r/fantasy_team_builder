@@ -1,0 +1,157 @@
+<div style="height: 70vh;">
+
+    <mat-grid-list cols="2" rowHeight="1:1">
+        <!--Left Side Of Team Builder Page-->
+        <div id="mainDiv">
+
+            <mat-grid-tile *ngIf="team">
+                <mat-grid-list style="height: 70vh; width: 50vw; margin-top: 40vh;" cols="2" rowHeight="2:1">
+
+                    <mat-grid-tile class="lhTile" id="lhTile1">
+                        <!-- Selected GK -->
+                        <div id="gkDiv" *ngIf="team.Goalkeeper.Name">
+                            <h3>Goalkeeper</h3>
+                            <mat-card id="gkCard">
+                                <mat-card-title>{{ team.Goalkeeper.Name }}</mat-card-title>
+                                <mat-card-subtitle>Plays For: {{ team.Goalkeeper.Club }}</mat-card-subtitle>
+                                <mat-card-content>
+                                    {{ team.Goalkeeper.Position }}
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <button mat-icon-button matTooltip="View Player Stats" (click)="openStatsDialog(team.Goalkeeper)">
+                                        <mat-icon>insert_chart_outlined</mat-icon>
+                                    </button>
+                                    <button mat-icon-button (click)="removePlayer(team.Goalkeeper)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile class="lhTile" id="lhTile2">
+
+                        <!-- SelectedFwds -->
+                        <div id="fwdDiv" *ngIf="team.Forwards[0].Name">
+                            <h3>Forwards</h3>
+                            <mat-card id="fwdCard" *ngFor="let player of team.Forwards">
+                                <mat-card-title *ngIf="player.Name">{{ player.Name }}</mat-card-title>
+                                <mat-card-subtitle *ngIf="player.Club">Plays For: {{ player.Club }}</mat-card-subtitle>
+                                <mat-card-content *ngIf="player.Position">
+                                    {{ player.Position }}
+                                </mat-card-content>
+                                <mat-card-actions *ngIf="player.Name">
+                                    <button mat-icon-button matTooltip="View Player Stats" (click)="openStatsDialog(player)">
+                                        <mat-icon>insert_chart_outlined</mat-icon>
+                                    </button>
+                                    <button mat-icon-button (click)="removePlayer(player)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </mat-grid-tile>
+
+                    <mat-grid-tile class="lhTile" id="lhTile3">
+
+                        <!-- Selected Defs -->
+                        <div id="defDiv" *ngIf="team.Defenders[0].Name">
+                            <h3>Defenders</h3>
+                            <mat-card id="defCard" *ngFor="let player of team.Defenders">
+                                <mat-card-title *ngIf="player.Name">{{ player.Name }}</mat-card-title>
+                                <mat-card-subtitle *ngIf="player.Club">Plays For: {{ player.Club }}</mat-card-subtitle>
+                                <mat-card-content *ngIf="player.Position">
+                                    {{ player.Position }}
+                                </mat-card-content>
+                                <mat-card-actions *ngIf="player.Name">
+                                    <button mat-icon-button matTooltip="View Player Stats" (click)="openStatsDialog(player)">
+                                        <mat-icon>insert_chart_outlined</mat-icon>
+                                    </button>
+                                    <button mat-icon-button (click)="removePlayer(player)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+
+                    </mat-grid-tile>
+                    <mat-grid-tile class="lhTile" id="lhTile4">
+
+                        <!-- Selected Mids -->
+                        <div id="midDiv" *ngIf="team.Midfielders[0].Name">
+                            <h3>Midfielders</h3>
+                            <mat-card id="midCard" *ngFor="let player of team.Midfielders">
+                                <mat-card-title *ngIf="player.Name">{{ player.Name }}</mat-card-title>
+                                <mat-card-subtitle *ngIf="player.Club">Plays For: {{ player.Club }}</mat-card-subtitle>
+                                <mat-card-content *ngIf="player.Position">
+                                    {{ player.Position }}
+                                </mat-card-content>
+                                <mat-card-actions *ngIf="player.Name">
+                                    <button mat-icon-button matTooltip="View Player Stats" (click)="openStatsDialog(player)">
+                                        <mat-icon>insert_chart_outlined</mat-icon>
+                                    </button>
+                                    <button mat-icon-button (click)="removePlayer(player)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                </mat-card-actions>
+                            </mat-card>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+
+
+
+            </mat-grid-tile>
+            <mat-grid-tile style="height: max-content;">
+                <form class="team-form">
+                    <mat-form-field id="teamName" class="formInput" appearance="standard">
+                        <mat-label>Enter Team name</mat-label>
+                        <input matInput [formControl]="teamName" required>
+                    </mat-form-field>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-select placeholder="Select Your Goalkeeper" (selectionChange)="changedGk()" [formControl]="myGoalkeeper">
+                                <mat-option *ngFor="let goalkeeper of goalkeepers" [value]="goalkeeper">
+                                    {{goalkeeper.Name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-select #defSel placeholder="Select Your Defenders" [formControl]="myDefenders" (selectionChange)="changedDef()" multiple>
+                                <mat-option [disabled]="isAllDefSelected" *ngFor="let defender of defenders" [value]="defender">
+                                    {{defender.Name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-select #midSel placeholder="Select Your Midfielders" [formControl]="myMidfielders" (selectionChange)="changedMid()" multiple>
+                                <mat-option [disabled]="isAllMidSelected" *ngFor="let midfielder of midfielders" [value]="midfielder">
+                                    {{midfielder.Name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <mat-form-field appearance="fill">
+                            <mat-select #fwdSel placeholder="Select Your Forwards" [formControl]="myForwards" (selectionChange)="changedFwd()" multiple>
+                                <mat-option [disabled]="isAllFwdSelected" *ngFor="let forward of forwards" [value]="forward">
+                                    {{forward.Name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </p>
+                    <button mat-icon-button color="primary" aria-label="Save Team" (click)="saveTeam()" [disabled]="notAllSelected()">
+                        <mat-icon>save</mat-icon>
+                        Save Team
+                    </button>
+                </form>
+            </mat-grid-tile>
+        </div>
+    </mat-grid-list>
+
+</div>

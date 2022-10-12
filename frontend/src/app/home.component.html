@@ -1,0 +1,44 @@
+<div id="mainDiv">
+    <div class="label" *ngIf="user">
+        <h1 style="margin-top: 2vh; padding: 2vh;">
+            Welcome {{ user.name }}
+        </h1>
+    </div>
+    <mat-expansion-panel id="expanPanel" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <mat-icon>
+                    assignment_ind
+                </mat-icon>
+                Edit User
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-form-field class="formInput" appearance="standard" style="margin-right: 2vw;">
+            <mat-label>Enter new name</mat-label>
+            <input matInput [formControl]="newUserName" required>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)=editUsername()>
+            <mat-icon matTooltip="Submit new name">
+                done
+            </mat-icon>
+        </button>
+    </mat-expansion-panel>
+
+    <div class="home-button-row">
+        <button mat-raised-button color="primary" routerLink="/create/team" id="teamCreate">Create A Team</button>
+
+    </div>
+    <div id="teamList">
+        <h1 style="margin-top: 2vh;">My Teams</h1>
+        <mat-card id="teamCard" *ngFor="let team of teams">
+            <mat-card-title>{{ team.Team_Name }}</mat-card-title>
+            <mat-card-actions>
+                <button mat-icon-button matTooltip="View Team" (click)="openStatsDialog(team)">
+                    <mat-icon>grade</mat-icon>
+                </button>
+                <button mat-icon-button matTooltip="Delete Team" (click)="deleteTeam(team._id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>

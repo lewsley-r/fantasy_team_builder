@@ -1,0 +1,47 @@
+.appMain {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    font-family: 'Comfortaa', cursive;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    width: 90vw;
+    height: 90vh;
+    padding: 1vh;
+    border-radius: 1em;
+}
+
+#topNav {
+    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    margin-top: -6vh;
+    height: 20vh;
+    margin-left: -5vw;
+    width: 100vw;
+}
+
+#premierLeagueLogo {
+    height: 10vh;
+    float: left;
+    cursor: pointer;
+    margin-top: 5vh;
+}
+
+#mainTitle {
+    position: absolute;
+    color: #3d195b;
+    left: 42vw;
+    font-weight: 900;
+    text-shadow: white 2px 2px;
+    top: 2vh;
+}
+
+#logout {
+    margin-top: 5vh;
+    float: right;
+    margin-right: 1vw;
+    background-color: white;
+    width: fit-content;
+    border-radius: 1em;
+    padding: 1vh;
+    height: fit-content;
+}

@@ -1,0 +1,24 @@
+#loginCard {
+    width: 30vw;
+    height: 40vh;
+    padding: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    border-radius: 1em;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#registerBtn {
+    background-color: inherit;
+}
+
+#loginTitle {
+    text-shadow: white 2px 2px;
+}
+
+.formInput {
+    width: 80%;
+    margin-top: 2vh;
+    color: #3d195b;
+}

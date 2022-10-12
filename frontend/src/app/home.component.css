@@ -1,0 +1,31 @@
+#mainDiv {
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 80vh;
+    margin-bottom: -80vh;
+    border-radius: 1em;
+}
+
+#expanPanel {
+    width: 60vw;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#teamCard {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#teamList {
+    overflow-y: scroll;
+    height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#teamCreate {
+    margin-top: 2vh;
+    margin-right: auto;
+    margin-left: auto;
+}

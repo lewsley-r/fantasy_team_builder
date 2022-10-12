@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pymongo = "==3.7.2"
+Flask = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

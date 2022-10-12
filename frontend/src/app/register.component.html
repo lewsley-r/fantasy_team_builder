@@ -1,0 +1,45 @@
+<div class="registerForm">
+    <mat-card id="registerCard">
+        <mat-card-title>
+            <mat-icon>assignment_ind</mat-icon>
+            Register
+        </mat-card-title>
+        <p>
+            <mat-form-field class="formInput" appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input matInput [formControl]="email" required>
+                <mat-error *ngIf="email.invalid">{{getErrorEmailMessage()}}</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field class="formInput" appearance="fill">
+                <mat-label>Enter your Full Name</mat-label>
+                <input matInput [formControl]="name" required>
+                <mat-error *ngIf="name.invalid">{{getErrorNameMessage()}}</mat-error>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field class="formInput" appearance="fill">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="pass" required>
+                <mat-error *ngIf="pass.invalid">{{getErrorPassMessage()}}</mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field class="formInput" appearance="fill">
+                <mat-label>Confirm your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" [formControl]="pass2" required>
+                <mat-error *ngIf="pass.invalid">{{getErrorPassMessage()}}</mat-error>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </p>
+        <button mat-icon-button (click)="submitRegister()">Submit
+            <mat-icon>assignment_turned_in</mat-icon>
+        </button>
+    </mat-card>
+</div>

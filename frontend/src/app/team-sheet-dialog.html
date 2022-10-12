@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{ data.team.Team_Name }}</h1>
+
+<div mat-dialog-content style="overflow-y: scroll; height: 60vh;">
+    <h3 style="font-weight: 900">Goalkeeper</h3>
+    <p>
+        {{ data.team.Goalkeeper.Name }}
+    </p>
+    <h3 style="font-weight: 900">Defenders</h3>
+    <p>
+        {{ data.team.Defenders[0].Name }}<br> {{ data.team.Defenders[1].Name }}<br> {{ data.team.Defenders[2].Name }}<br> {{ data.team.Defenders[3].Name }}
+    </p>
+    <h3 style="font-weight: 900">Midfielders</h3>
+    <p>
+        {{ data.team.Midfielders[0].Name }}<br> {{ data.team.Midfielders[1].Name }}<br> {{ data.team.Midfielders[2].Name }}<br> {{ data.team.Midfielders[3].Name }}
+    </p>
+    <h3 style="font-weight: 900">Forwards</h3>
+    <p>
+        {{ data.team.Forwards[0].Name }}<br> {{ data.team.Forwards[1].Name }}
+    </p>
+</div>
